@@ -29,6 +29,13 @@
                 ctx.fillStyle = color;
                 ctx.fillRect(x, y, blockSize, blockSize);
             };
+            // Adding "drawCircle" method
+            Block.prototype.drawCircle = function (color) {
+                var centerX = this.col * blockSize + blockSize / 2;
+                var centerY = this.row * blockSize + blockSize / 2;
+                ctx.fillStyle = color;
+                circle(centerX, centerY, blockSize / 2, true);
+            };
 
         // Set score to zero
         var score = 0;
