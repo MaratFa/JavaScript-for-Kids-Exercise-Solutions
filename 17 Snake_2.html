@@ -17,15 +17,21 @@
             var blockSize = 10;
             var widthInBlocks = width / blockSize;
             var heightInBlocks = height / blockSize;
+            // Adding "Block" constructor
+            var Block = function (col, row) {
+                this.col = col;
+                this.row = row;
+            };
+            // Adding "drawSquare" method
+            Block.prototype.drawSquare = function (color) {
+                var x = this.col * blockSize;
+                var y = this.row * blockSize;
+                ctx.fillStyle = color;
+                ctx.fillRect(x, y, blockSize, blockSize);
+            };
 
         // Set score to zero
         var score = 0;
-
-        // Adding "Block" constructor
-        var Block = function (col, row) {
-            this.col = col;
-            this.row = row;
-        };
         
         // Create snake
         
