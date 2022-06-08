@@ -41,15 +41,23 @@
         var score = 0;
         
         // Create snake
-        var Snake = function () {
-            this.segments = [
-                new Block(7, 5),
-                new Block(6, 5),
-                new Block(5, 5)
-            ];
-            this.direction = "right";
-            this.nextDirection = "right";
-        };
+            // Create "Snake" constructor
+            var Snake = function () {
+                this.segments = [
+                    new Block(7, 5),
+                    new Block(6, 5),
+                    new Block(5, 5)
+                ];
+                this.direction = "right";
+                this.nextDirection = "right";
+            };
+            // Adding "draw" method with "Snake" constructor
+            Snake.prototype.draw = function () {
+                for (var i = 0; i < this.segments.length; i++) {
+                    this.segments[i].drawSquare("Blue");
+                }
+            };
+
         // Create apple
 
         // Every 100 milliseconds
