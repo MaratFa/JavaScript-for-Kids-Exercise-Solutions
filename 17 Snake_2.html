@@ -142,13 +142,19 @@
                 drawBorder();
             }, 100);
              
-        // When the user presses a key
-        /*When the user presses a key {
-            If the key is an arrow {
-                Update the direction of the snake
+        // Adding the keydown Event Handler
+        var directions = {
+            37: "left",
+            38: "up",
+            39: "right",
+            40: "down"
+        };
+        $("body").keydown(function (event) {
+            var newDirection = directions[event.keyCode];
+            if (newDirection !== undefined) {
+                snake.setDirection(newDirection);
             }
-        }       
-        */          
+        });                
     </script>
 </body>
 </html>
