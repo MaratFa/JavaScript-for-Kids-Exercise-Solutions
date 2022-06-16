@@ -104,7 +104,10 @@
             var Apple = function () {
                 this.position = new Block(10, 10);
             };
-            
+            // Drawing the Apple
+            Apple.prototype.draw = function () {
+                this.position.drawCircle("LimeGreen");
+            };
 
         // Every 100 milliseconds
             // Function for drawing the Border
