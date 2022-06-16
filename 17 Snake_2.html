@@ -34,14 +34,17 @@
                 ctx.beginPath();
                 ctx.arc(x, y, radius, 0, Math.PI * 2, false);
                 ctx.fill();
-            };
-            
+            };            
             Block.prototype.drawCircle = function (color) {
                 var centerX = this.col * blockSize + blockSize / 2;
                 var centerY = this.row * blockSize + blockSize / 2;
                 ctx.fillStyle = color;
                 circle(centerX, centerY, blockSize / 2, true);
-            };            
+            };
+            // Adding the equal Method
+            Block.prototype.equal = function (otherBlock) {
+                return this.col === otherBlock.col && this.row === otherBlock.row;
+            };
 
         // Set score to zero
         var score = 0;
