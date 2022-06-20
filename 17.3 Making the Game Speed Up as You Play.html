@@ -43,7 +43,7 @@
 
         // Clear the interval and display Game Over text
         var gameOver = function () {
-            animationTime = 0;			
+            gameContinues = false;			
             ctx.font = "60px Courier";
             ctx.fillStyle = "Black";
             ctx.textAlign = "center";
@@ -193,14 +193,17 @@
 
         // Pass an animation function to setTimeout 
         var animationTime = 100;
-		var gameLoop = function () {			
+		var gameContinues = true;
+		var gameLoop = function () {
 			ctx.clearRect(0, 0, width, height);
 			drawScore();
 			snake.move();
 			snake.draw();
 			apple.draw();
 			drawBorder();
-			setTimeout(gameLoop, animationTime);
+			if (gameContinues) {				
+				setTimeout(gameLoop, animationTime);
+			}
 		}
 		gameLoop();		 
 			 
