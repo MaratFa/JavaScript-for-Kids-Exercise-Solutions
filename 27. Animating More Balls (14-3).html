@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>A Bouncing Ball</title>
+</head>
+<body>
+    <canvas id="canvas" width="500" height="300"></canvas>
+    <script>
+        // To get the drawing context
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+        // Set the variables using the canvas object        
+        var width = canvas.width;
+        var height = canvas.height;        
+        // The Ball Constructor
+        var Ball = function () {
+            this.x = 100;
+            this.y = 100;
+            // Seting "this.xSpeed" and "this.ySpeed" to different random numbers (between –5 and 5)
+            this.xSpeed = Math.random() * 10 - 5;
+            this.ySpeed = Math.random() * 10 - 5;
+        };
+        // Function for drawing circles
+        var circle = function (x, y, radius, fillCircle) {
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2, false);
+            if (fillCircle) {
+                ctx.fill();
+            } else {
+                ctx.stroke();
+            }
+        };
+        // Add a draw method to "Ball" constructor
+        Ball.prototype.draw = function () {
+            circle(this.x, this.y, 3, true);
+        };
+        // Update the x and y properties of "Ball" constructor with "move" method
+        Ball.prototype.move = function () {
+            this.x += this.xSpeed;
+            this.y += this.ySpeed;
+        };
+        // "checkCollision" method to see if the ball has collided with (hit) the wall
+        Ball.prototype.checkCollision = function () {
+            if (this.x < 0 || this.x > width) {
+                this.xSpeed = -this.xSpeed;
+            }
+            if (this.y < 0 || this.y > height) {
+                this.ySpeed = -this.ySpeed;
+            }
+        }   
+        // Create empty array "balls"
+        var balls = [];
+        // Add 10 balls into empty array "balls" with "for" loop and constructor "Ball"
+        for (var i = 0; i < 10; i++) {
+            balls[i] = new Ball();
+        }
+        // Animating the ball 
+        setInterval(function() {
+            ctx.clearRect(0, 0, width, height);
+            for (i = 0; i < 10; i++) {
+                balls[i].draw();
+                balls[i].move();
+                balls[i].checkCollision();
+            }
+            ctx.strokeRect(0, 0, width, height);
+        }, 30); 
+    </script>
+</body>
+</html>

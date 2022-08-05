@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Snake!</title>
+</head>
+<body>    
+    <canvas id="canvas" width="400" height="400"></canvas>
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+    <script>
+        // Set up the canvas
+            // Defining the canvas, ctx, width, and height Variables
+            var canvas = document.getElementById("canvas");
+            var ctx = canvas.getContext("2d");
+            var width = canvas.width;
+            var height = canvas.height;
+            // Dividing the Canvas into Blocks
+            var blockSize = 10;
+            var widthInBlocks = width / blockSize;
+            var heightInBlocks = height / blockSize;
+
+        // Set score to zero
+        var score = 0;
+
+        // Create snake
+        
+        // Create apple
+
+        // Every 100 milliseconds
+            // Function for drawing the Border
+            var drawBorder = function () {
+                ctx.fillStyle = "Gray";
+                ctx.fillRect(0, 0, width, blockSize);
+                ctx.fillRect(0, height - blockSize, width, blockSize);
+                ctx.fillRect(0, 0, blockSize, height);
+                ctx.fillRect(width - blockSize, 0, blockSize, height);
+            };
+            // Writing the drawScore Function
+            var drawScore = function () {
+                // Setting the Text Font
+                ctx.font = "20px Courier";
+                // Setting the Text Color            
+                ctx.fillStyle = "Black";
+                // Setting the Text Alignment
+                ctx.textAlign = "left";
+                // Setting the Text Baseline
+                ctx.textBaseline = "top";
+                // Displaying the Score
+                ctx.fillText("Score: " + score, blockSize, blockSize);
+            };
+            // Function "gameOver" for ending the Game 
+            var gameOver = function () {
+                clearInterval(intervalId);
+                ctx.font = "60px Courier";
+                ctx.fillStyle = "Black";
+                ctx.textAlign = "center";
+                ctx.textBaseline = "middle";
+                ctx.fillText("Game Over", width / 2, height / 2);
+            };
+            // Using "setInterval" to Animate the Game           
+            var intervalId = setInterval(function () {
+                ctx.clearRect(0, 0, width, height);
+                drawScore();
+                score++;
+                drawBorder();
+            }, 100);
+  
+        // When the user presses a key
+        /*When the user presses a key {
+            If the key is an arrow {
+                Update the direction of the snake
+            }
+        }       
+        */          
+    </script>
+</body>
+</html>
