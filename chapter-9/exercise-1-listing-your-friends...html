@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>#1: listing Your friends with jQuery (And Making Them Smell!)</title>
+  </head>
+
+  <body>
+    <h1 id="main-heading">Hello world!</h1>
+
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+
+    <script>
+      $("h1").fadeOut(3000).fadeIn(3000);
+      $("#main-heading").text("My friends");
+
+      var namesOfFriends = ["Alexander", "Dmitryi", "Maxim"];
+      for (var i = 0; i < namesOfFriends.length; i++) {
+        $("body").append("<p>" + namesOfFriends[i] + "</p>");
+      }
+      $("p").append(" smells");
+    </script>
+  </body>
+</html>
